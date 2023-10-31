@@ -1,0 +1,6 @@
+# gamejam-DAE-Sandbox-1
+
+## setup unity ##
+edit -> project settings -> version control -> mode: visible meta files...
+
+edit -> project settings -> editor -> asset serialisation -> mode: force text...
