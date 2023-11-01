@@ -6,6 +6,11 @@ using UnityEngine;
 public class HouseScript : MonoBehaviour
 {
 
+    /*
+     * When an npc touches this house, the npc script is assumed
+     * to choose a new target...
+     */
+
     public GameObject[] npcBlueprints;
     public GameObject[] npcs;
 

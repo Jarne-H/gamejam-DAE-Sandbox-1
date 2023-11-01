@@ -28,7 +28,6 @@ public class NpcScript : MonoBehaviour
         if (Input.GetKey(KeyCode.W))
         {
             rb.velocity = transform.forward * velocity;
-            
         }
         if (Input.GetKey(KeyCode.S))
         {
