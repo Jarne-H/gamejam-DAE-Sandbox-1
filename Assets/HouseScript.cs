@@ -7,7 +7,9 @@ public class HouseScript : MonoBehaviour
 {
 
     public GameObject[] npcBlueprints;
-    List<int> npcs; // indices in npcBlueprints...
+    public GameObject[] npcs;
+
+    int free; // free index in npcs...
 
     public int maxNpcs;
 
@@ -18,10 +20,12 @@ public class HouseScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        npcs = new List<int>(); 
-        for (int i = 0; i < Random.Range(0, maxNpcs); i++)
+        npcs = new GameObject[maxNpcs];
+        free = Random.Range(0, maxNpcs);
+        for (int i = 0; i < free; i++)
         {
-            npcs.Add(Random.Range(0, npcBlueprints.Length));
+            npcs[i] = Instantiate(npcBlueprints[Random.Range(0, npcBlueprints.Length)]);
+            npcs[i].SetActive(false);
         }
     }
 
@@ -41,14 +45,26 @@ public class HouseScript : MonoBehaviour
 
     bool shouldLeave()
     {
-        return npcs.Count > 0 && Random.Range(0, 10) == 0;
+        return free > 0 && Random.Range(0, 10) == 0;
     }
     void leave()
     {
-        int i = npcs.ElementAt(npcs.Count - 1);
-        npcs.RemoveAt(npcs.Count - 1);
-        Instantiate(npcBlueprints[i]);
+        int last = free - 1;
+        npcs[last].transform.position = transform.position + Vector3.left * 3;
+        npcs[last].SetActive(true);
+        npcs[last] = null;
+        free = last;
     }
 
+
+    void OnCollisionEnter(Collision collision)
+    {
+        if (free < maxNpcs)
+        {
+            collision.gameObject.SetActive(false);
+            npcs[free] = collision.gameObject;
+            free++;
+        }
+    }
 
 }

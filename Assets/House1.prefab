@@ -50,7 +50,8 @@ MonoBehaviour:
   npcBlueprints:
   - {fileID: 1945290725723549932, guid: 1d2bc355278537f46ac3ef889ac0ba89, type: 3}
   - {fileID: 4644967300880301972, guid: 77bf39efa47a86c4a93a21057ae721a5, type: 3}
-  maxNpcs: 0
+  npcs: []
+  maxNpcs: 10
   randInterval: 1
 --- !u!33 &7780742530174519007
 MeshFilter:

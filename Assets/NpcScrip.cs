@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Assertions;
 
 public class NpcScrip : MonoBehaviour
 {
@@ -29,4 +30,18 @@ public class NpcScrip : MonoBehaviour
         Vector3 v = target.transform.position - transform.position;
         transform.position += v.normalized * velocity * Time.deltaTime;
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "House")
+        {
+            GameObject[] houses = GameObject.FindGameObjectsWithTag("House");
+            Assert.IsTrue(houses.Length >= 2); // otherwise infinte loop to get back to original house...
+            while (target == collision.gameObject)
+            {
+                target = houses[Random.Range(0, houses.Length)];
+            }
+        }
+    }
+
 }
