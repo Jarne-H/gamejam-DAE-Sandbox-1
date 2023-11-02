@@ -13,15 +13,8 @@ public class NpcScrip : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        GameObject[] houses = GameObject.FindGameObjectsWithTag("House");
-        target = houses[0];
-        for (int i = 1; i < houses.Length; i++)
-        {
-            if (Vector3.Distance(transform.position, houses[i].transform.position) < Vector3.Distance(transform.position, target.transform.position))
-            {
-                target = houses[i];
-            }
-        }
+        if (target == null)
+            SetTarget(gameObject);
     }
 
     // Update is called once per frame
@@ -35,12 +28,32 @@ public class NpcScrip : MonoBehaviour
     {
         if (collision.gameObject.tag == "House")
         {
-            GameObject[] houses = GameObject.FindGameObjectsWithTag("House");
-            Assert.IsTrue(houses.Length >= 2); // otherwise infinte loop to get back to original house...
-            while (target == collision.gameObject)
+            ChangeTarget(gameObject);
+        }
+    }
+
+    public static void SetTarget(GameObject npc)
+    {
+        NpcScrip script = npc.GetComponent<NpcScrip>();
+        GameObject[] houses = GameObject.FindGameObjectsWithTag("House");
+        script.target = houses[0];
+        for (int i = 1; i < houses.Length; i++)
+        {
+            if (Vector3.Distance(npc.transform.position, houses[i].transform.position) < Vector3.Distance(npc.transform.position, script.target.transform.position))
             {
-                target = houses[Random.Range(0, houses.Length)];
+                script.target = houses[i];
             }
+        }
+    }
+    public static void ChangeTarget(GameObject npc)
+    {
+        NpcScrip script = npc.GetComponent<NpcScrip>();
+        GameObject old = script.target; 
+        GameObject[] houses = GameObject.FindGameObjectsWithTag("House");
+        Assert.IsTrue(houses.Length >= 2); // otherwise infinte loop to get back to original house...
+        while (script.target == old)
+        {
+            script.target = houses[Random.Range(0, houses.Length)];
         }
     }
 

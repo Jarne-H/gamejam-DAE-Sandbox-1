@@ -30,6 +30,9 @@ public class HouseScript : MonoBehaviour
         for (int i = 0; i < free; i++)
         {
             npcs[i] = Instantiate(npcBlueprints[Random.Range(0, npcBlueprints.Length)]);
+            npcs[i].transform.position = transform.position;
+            NpcScrip.SetTarget(npcs[i]);
+            NpcScrip.ChangeTarget(npcs[i]);
             npcs[i].SetActive(false);
         }
     }
@@ -64,7 +67,7 @@ public class HouseScript : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        if (free < maxNpcs)
+        if (collision.gameObject.tag == "Npc" && free < maxNpcs)
         {
             collision.gameObject.SetActive(false);
             npcs[free] = collision.gameObject;

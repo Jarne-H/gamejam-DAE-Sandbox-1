@@ -15,7 +15,7 @@ public class NpcScript : MonoBehaviour
         //gameObject
         //transform
 
-        velocity = 15;
+        //velocity = 15;
 
         //Fetch the Rigidbody component you attach from your GameObject
         rb = GetComponent<Rigidbody>();
