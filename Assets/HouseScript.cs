@@ -58,7 +58,7 @@ public class HouseScript : MonoBehaviour
     void leave()
     {
         int last = free - 1;
-        npcs[last].transform.position = transform.position + Vector3.left * 3;
+        npcs[last].transform.position = transform.Find("exit").position;
         npcs[last].SetActive(true);
         npcs[last] = null;
         free = last;

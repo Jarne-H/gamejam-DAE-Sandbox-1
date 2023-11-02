@@ -148,3 +148,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   velocity: 1
   target: {fileID: 0}
+  talkDistance: 3

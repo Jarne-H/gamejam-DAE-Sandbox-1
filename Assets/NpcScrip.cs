@@ -8,7 +8,7 @@ public class NpcScrip : MonoBehaviour
 
     public float velocity;
     public GameObject target;
-
+    public float talkDistance;
 
     // Start is called before the first frame update
     void Start()
@@ -20,6 +20,8 @@ public class NpcScrip : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Vector3.Distance(transform.position, GameObject.FindGameObjectWithTag("Player").transform.position) < talkDistance)
+            return;
         Vector3 v = target.transform.position - transform.position;
         transform.position += v.normalized * velocity * Time.deltaTime;
     }
