@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Assertions;
+using UnityEngine.Experimental.GlobalIllumination;
 
 public class NpcScrip : MonoBehaviour
 {
@@ -23,6 +24,7 @@ public class NpcScrip : MonoBehaviour
 
     Transform textChild;
     TextMeshPro text;
+    Transform spot;
 
     // Start is called before the first frame update
     void Start()
@@ -33,6 +35,8 @@ public class NpcScrip : MonoBehaviour
         textChild.gameObject.SetActive(false);
         text = textChild.GetComponent<TextMeshPro>();
         PickStory();
+        spot = transform.Find("Spot");
+        spot.gameObject.SetActive(false);
     }
 
     void PickStory()
@@ -47,9 +51,11 @@ public class NpcScrip : MonoBehaviour
         if (Vector3.Distance(transform.position, GameObject.FindGameObjectWithTag("Player").transform.position) < talkDistance)
         {
             textChild.gameObject.SetActive(true);   
+            spot.gameObject.SetActive(true);
             return;
         }
         textChild.gameObject.SetActive(false);
+        spot.gameObject.SetActive(false);
         Vector3 v = target.transform.position - transform.position;
         transform.position += v.normalized * velocity * Time.deltaTime;
     }
