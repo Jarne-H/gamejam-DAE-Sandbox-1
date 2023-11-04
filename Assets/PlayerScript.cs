@@ -1,3 +1,4 @@
+using Assets;
 using Unity.Properties;
 using UnityEngine;
 
@@ -13,6 +14,9 @@ public class NpcScript : MonoBehaviour
     public Transform from;
     public Transform to;
 
+    public float attackRange;
+
+
     public bool mouseControl;
 
     // Start is called before the first frame update
@@ -22,7 +26,6 @@ public class NpcScript : MonoBehaviour
     }
 
     // Update is called once per frame
-
     void Update()
     {
 
@@ -35,22 +38,23 @@ public class NpcScript : MonoBehaviour
         }
         
         // atack...
-        /*if (Input.GetMouseButtonDown(0))
+        /*if (Input.GetMouseButtonDown(0))*/
+        if (Input.GetKeyDown(KeyCode.F))
         {
-            
             Ray ray = new Ray(from.position, to.position - from.position);
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit))
             {
                 GameObject collider = hit.collider.gameObject;
-                if (collider.tag == "Npc")
+                if (collider.tag == "Npc" && Vector3.Distance(transform.position, collider.transform.position) <= attackRange)
                 {
-                    // score stuff and evil/good stuff...
-                    Destroy(collider);
+                    NpcScrip npc = collider.GetComponent<NpcScrip>();
+                    Story story = npc.story;
+                    if (!story.isGood)
+                        Destroy(collider);
                 }
             }
-            
-        }*/
+        }
 
         //movement
         if (Input.GetKey(KeyCode.W))
