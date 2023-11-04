@@ -1,5 +1,7 @@
+using Assets;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Assertions;
 
@@ -10,11 +12,26 @@ public class NpcScrip : MonoBehaviour
     public GameObject target;
     public float talkDistance;
 
+    public Story story;
+
+    Transform textChild;
+    TextMeshPro text;
+
     // Start is called before the first frame update
     void Start()
     {
         if (target == null)
             SetTarget(gameObject);
+        textChild = transform.Find("Text");
+        textChild.gameObject.SetActive(false);
+        text = textChild.GetComponent<TextMeshPro>();
+        PickStory();
+    }
+
+    void PickStory()
+    {
+        story = new Story("I only stole 1 candy", true);
+        text.text = story.story;
     }
 
     // Update is called once per frame
@@ -22,9 +39,10 @@ public class NpcScrip : MonoBehaviour
     {
         if (Vector3.Distance(transform.position, GameObject.FindGameObjectWithTag("Player").transform.position) < talkDistance)
         {
-
+            textChild.gameObject.SetActive(true);   
             return;
         }
+        textChild.gameObject.SetActive(false);
         Vector3 v = target.transform.position - transform.position;
         transform.position += v.normalized * velocity * Time.deltaTime;
     }

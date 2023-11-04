@@ -1,3 +1,5 @@
+using Assets;
+using Unity.Properties;
 using System;
 using UnityEngine;
 
@@ -13,6 +15,12 @@ public class NpcScript : MonoBehaviour
 
     public float previousPosY;
     public float currentPosY;
+
+    public Transform from;
+    public Transform to;
+
+    public float attackRange;
+
 
     public bool mouseControl;
     public Vector3 v = Vector3.zero;
@@ -30,7 +38,6 @@ public class NpcScript : MonoBehaviour
     }
 
     // Update is called once per frame
-
     void Update()
     {
         currentPosY = rb.position.y;
@@ -42,6 +49,27 @@ public class NpcScript : MonoBehaviour
             mouseControl = false;
 
         }
+        
+        // atack...
+        /*if (Input.GetMouseButtonDown(0))*/
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            Ray ray = new Ray(from.position, to.position - from.position);
+            RaycastHit hit;
+            if (Physics.Raycast(ray, out hit))
+            {
+                GameObject collider = hit.collider.gameObject;
+                if (collider.tag == "Npc" && Vector3.Distance(transform.position, collider.transform.position) <= attackRange)
+                {
+                    NpcScrip npc = collider.GetComponent<NpcScrip>();
+                    Story story = npc.story;
+                    if (!story.isGood)
+                        Destroy(collider);
+                }
+            }
+        }
+
+        //movement
         Vector3 v = Vector3.zero;
 
         if (Input.GetKey(KeyCode.W))
