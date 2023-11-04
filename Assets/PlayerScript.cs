@@ -14,14 +14,7 @@ public class NpcScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //gameObject
-        //transform
 
-        //velocity = 15;
-
-        //Fetch the Rigidbody component you attach from your GameObject
-        rb = GetComponent<Rigidbody>();
-        //Set the speed of the GameObject
     }
 
     // Update is called once per frame
