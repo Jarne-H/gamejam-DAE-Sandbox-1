@@ -35,8 +35,9 @@ public class NpcScript : MonoBehaviour
         }
         
         // atack...
-        if (Input.GetMouseButtonDown(0))
+        /*if (Input.GetMouseButtonDown(0))
         {
+            
             Ray ray = new Ray(from.position, to.position - from.position);
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit))
@@ -44,10 +45,12 @@ public class NpcScript : MonoBehaviour
                 GameObject collider = hit.collider.gameObject;
                 if (collider.tag == "Npc")
                 {
-                    collider.SetActive(false);
+                    // score stuff and evil/good stuff...
+                    Destroy(collider);
                 }
             }
-        }
+            
+        }*/
 
         //movement
         if (Input.GetKey(KeyCode.W))
