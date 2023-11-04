@@ -63,6 +63,7 @@ public class NpcScript : MonoBehaviour
                 {
                     NpcScrip npc = collider.GetComponent<NpcScrip>();
                     Story story = npc.story;
+                    //Destroy(collider);
                     if (!story.isGood)
                         Destroy(collider);
                 }

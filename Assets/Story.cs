@@ -11,17 +11,18 @@ namespace Assets
     public class Story
     {
 
-        public static int Chance = 10;
+        public static int Chance = 2;
 
         public bool isGood;
         public string story;
 
-        public Story() : this(Story.Chance) { }  
 
         public Story(int chance) 
         {
             isGood = UnityEngine.Random.Range(0, chance) != 0;
         }
+
+        public Story(string story) : this(story, UnityEngine.Random.Range(0, Chance) == 0) { }
 
         public Story(string story, bool isGood)
         {

@@ -1,4 +1,5 @@
 using Assets;
+using Assets.Stories;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -7,6 +8,12 @@ using UnityEngine.Assertions;
 
 public class NpcScrip : MonoBehaviour
 {
+
+    // (G/B)^n
+    public static Story[] stories = new Story[] {
+        new CandyStory(3),
+        new SpiderStory(2)
+    };
 
     public float velocity;
     public GameObject target;
@@ -30,7 +37,7 @@ public class NpcScrip : MonoBehaviour
 
     void PickStory()
     {
-        story = new Story("I only stole 1 candy", true);
+        story = stories[Random.Range(0, stories.Length)];
         text.text = story.story;
     }
 

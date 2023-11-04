@@ -67,7 +67,7 @@ public class HouseScript : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "Npc" && free < maxNpcs)
+        if (collision.gameObject.tag == "Npc" && free < maxNpcs && collision.gameObject.GetComponent<NpcScrip>().target == gameObject) 
         {
             collision.gameObject.SetActive(false);
             npcs[free] = collision.gameObject;
