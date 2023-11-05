@@ -206,6 +206,7 @@ Transform:
   - {fileID: 8458873489216006197}
   - {fileID: 5638709200831440350}
   - {fileID: 1645636953742354800}
+  - {fileID: 3791297416185983033}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &7945006047989005997
@@ -271,6 +272,37 @@ MonoBehaviour:
   velocity: 1
   target: {fileID: 0}
   talkDistance: 3
+--- !u!1 &5460588915755054611
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3791297416185983033}
+  m_Layer: 0
+  m_Name: Dragger
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3791297416185983033
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5460588915755054611}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 1.611}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7323395465591272190}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5867932799624434055
 GameObject:
   m_ObjectHideFlags: 0
@@ -441,10 +473,22 @@ PrefabInstance:
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -6442298374534657108, guid: cf4b7c57b8b948441bd232e591cdab3b, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 9a713dc1d50697f43b022d938ab3a3cb, type: 2}
     - target: {fileID: 919132149155446097, guid: cf4b7c57b8b948441bd232e591cdab3b, type: 3}
       propertyPath: m_Name
       value: Pumpkin_Man
       objectReference: {fileID: 0}
+    - target: {fileID: 6589126927893049898, guid: cf4b7c57b8b948441bd232e591cdab3b, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 54c7b01e23dad8a498d8e9bde802f02f, type: 2}
+    - target: {fileID: 6589126927893049898, guid: cf4b7c57b8b948441bd232e591cdab3b, type: 3}
+      propertyPath: m_Materials.Array.data[2]
+      value: 
+      objectReference: {fileID: 2100000, guid: 97298d2e4f48723479aefd53133f57ea, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
