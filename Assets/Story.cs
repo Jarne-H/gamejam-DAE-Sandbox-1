@@ -8,7 +8,7 @@ using UnityEngine;
 
 namespace Assets
 {
-    public class Story
+    public abstract class Story
     {
 
         public static int Chance = 2;
@@ -28,6 +28,21 @@ namespace Assets
         {
             this.story = story;
             this.isGood = isGood;
+        }
+
+        // assumes story was bad...
+        protected abstract int Score();
+
+        public int GetScore()
+        {
+            if (isGood)
+            {
+                return -10;
+            }
+            else
+            {
+                return 10 + Score();
+            }
         }
 
 

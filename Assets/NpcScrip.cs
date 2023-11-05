@@ -12,8 +12,36 @@ public class NpcScrip : MonoBehaviour
 
     // (G/B)^n
     public static Story[] stories = new Story[] {
+        new CandyStory(1),
+        new CandyStory(2),
         new CandyStory(3),
-        new SpiderStory(2)
+        new CandyStory(5),
+        new CandyStory(9),
+        new CandyStory(11),
+        new CandyStory(20),
+        new CandyStory(26),
+        new SpiderStory(2),
+        new SpiderStory(3),
+        new SpiderStory(4),
+        new SpiderStory(6),
+        new SpiderStory(10),
+        new SpiderStory(13),
+        new SpiderStory(17),
+        new SpiderStory(21),
+        new SpiderStory(38),
+        new SpiderStory(42),
+        new PumpkinStory(1),
+        new PumpkinStory(2),
+        new PumpkinStory(5),
+        new PumpkinStory(6),
+        new PumpkinStory(7),
+        new PumpkinStory(8),
+        new PumpkinStory(10),
+        new PumpkinStory(11),
+        new PumpkinStory(12),
+        new PumpkinStory(20),
+        new PumpkinStory(21),
+        new PumpkinStory(22),
     };
 
     public float velocity;

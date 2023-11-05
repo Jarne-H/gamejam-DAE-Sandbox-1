@@ -2,6 +2,7 @@ using Assets;
 using Unity.Properties;
 using System;
 using UnityEngine;
+using TMPro;
 
 public class NpcScript : MonoBehaviour
 {
@@ -20,6 +21,8 @@ public class NpcScript : MonoBehaviour
     public Transform to;
 
     public float attackRange;
+    public GameObject scoreText;
+    public int score;
 
 
     public bool mouseControl;
@@ -34,12 +37,16 @@ public class NpcScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        score = 0;
     }
 
     // Update is called once per frame
     void Update()
     {
+
+        TextMeshProUGUI text = scoreText.GetComponent<TextMeshProUGUI>();
+        text.text = "score: " + score;
+
         currentPosY = rb.position.y;
         if (mouseControl)
         {
@@ -63,9 +70,8 @@ public class NpcScript : MonoBehaviour
                 {
                     NpcScrip npc = collider.GetComponent<NpcScrip>();
                     Story story = npc.story;
-                    //Destroy(collider);
-                    if (!story.isGood)
-                        Destroy(collider);
+                    score += story.GetScore();
+                    Destroy(collider);
                 }
             }
         }

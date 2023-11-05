@@ -10,9 +10,15 @@ namespace Assets.Stories
     internal class CandyStory : Story
     {
 
-        public static int BadCandies = 10; // from which point it is bad...
+        public static int BadCandies = 5; // from which point it is bad...
 
-        public CandyStory(int c) : base("I stole only " + c.ToString() + " candies...", c < BadCandies) { }
+        private int count;
 
+        public CandyStory(int c) : base("I stole only " + c.ToString() + " candies...", c < BadCandies) { count = c; }
+
+        protected override int Score()
+        {
+            return count - BadCandies;
+        }
     }
 }

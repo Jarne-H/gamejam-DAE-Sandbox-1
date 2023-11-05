@@ -6,15 +6,14 @@ using System.Threading.Tasks;
 
 namespace Assets.Stories
 {
-    internal class SpiderStory : Story
+    internal class PumpkinStory : Story
     {
-        public static int SpiderCount = 5;
-
+        public static int BadPumpkins = 3;
         private int count;
-        public SpiderStory(int c) : base("I killed " + c.ToString() + " spiders...", c >= SpiderCount) { count = c; }
+        public PumpkinStory(int c) : base("I carved " + c + "pumkins...", c >= BadPumpkins) { count = c; }
         protected override int Score()
         {
-            return SpiderCount - count;
+            return BadPumpkins - count;
         }
     }
 }
