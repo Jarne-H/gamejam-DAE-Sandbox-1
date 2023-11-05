@@ -10,7 +10,7 @@ namespace Assets.Stories
     {
         public static int BadPumpkins = 3;
         private int count;
-        public PumpkinStory(int c) : base("I carved " + c + "pumkins...", c >= BadPumpkins) { count = c; }
+        public PumpkinStory(int c) : base("I carved " + c + " pumkin" + (c == 1 ? "" : "s") + "...", c >= BadPumpkins) { count = c; }
         protected override int Score()
         {
             return BadPumpkins - count;

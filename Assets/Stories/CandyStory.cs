@@ -14,7 +14,7 @@ namespace Assets.Stories
 
         private int count;
 
-        public CandyStory(int c) : base("I stole only " + c.ToString() + " candies...", c < BadCandies) { count = c; }
+        public CandyStory(int c) : base("I stole only " + c.ToString() + " candie" + (c == 1 ? "" : "s") + "...", c < BadCandies) { count = c; }
 
         protected override int Score()
         {

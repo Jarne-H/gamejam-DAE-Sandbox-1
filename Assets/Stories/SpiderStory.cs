@@ -11,7 +11,7 @@ namespace Assets.Stories
         public static int SpiderCount = 5;
 
         private int count;
-        public SpiderStory(int c) : base("I killed " + c.ToString() + " spiders...", c >= SpiderCount) { count = c; }
+        public SpiderStory(int c) : base("I killed " + c.ToString() + " spider" + (c == 1 ? "" : "s" ) + "...", c >= SpiderCount) { count = c; }
         protected override int Score()
         {
             return SpiderCount - count;
