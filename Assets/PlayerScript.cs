@@ -10,6 +10,8 @@ public class NpcScript : MonoBehaviour
     public Rigidbody rb;
     public float velocity;
 
+    AudioSource audioPlayer;
+
     public float rotationSpeed;
 
     public float jumpheight;
@@ -38,6 +40,8 @@ public class NpcScript : MonoBehaviour
     void Start()
     {
         score = 0;
+        audioPlayer = GetComponent<AudioSource>();
+        audioPlayer.Play(0);
     }
 
     // Update is called once per frame
@@ -69,9 +73,11 @@ public class NpcScript : MonoBehaviour
                 if (collider.tag == "Npc" && Vector3.Distance(transform.position, collider.transform.position) <= attackRange)
                 {
                     NpcScrip npc = collider.GetComponent<NpcScrip>();
+                    AudioSource scream = npc.scream;
+                    scream.Play(0);
                     Story story = npc.story;
                     score += story.GetScore();
-                    Destroy(collider);
+                    Destroy(collider, 5f);
                 }
             }
         }

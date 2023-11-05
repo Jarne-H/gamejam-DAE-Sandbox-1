@@ -48,6 +48,8 @@ public class NpcScrip : MonoBehaviour
     public GameObject target;
     public float talkDistance;
 
+    public AudioSource scream;
+
     public Story story;
 
     Transform textChild;
@@ -57,6 +59,7 @@ public class NpcScrip : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        scream = GetComponent<AudioSource>();
         if (target == null)
             SetTarget(gameObject);
         textChild = transform.Find("Text");
@@ -72,6 +75,7 @@ public class NpcScrip : MonoBehaviour
         story = stories[Random.Range(0, stories.Length)];
         text.text = story.story;
     }
+
 
     // Update is called once per frame
     void Update()
